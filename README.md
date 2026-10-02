@@ -1,11 +1,27 @@
 # ⚡ Content-Writer-AI — Autonomous Content Ops & Writing Agent Engine (2026)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Engine Version](https://img.shields.io/badge/Engine%20Version-v2.6%20Agentic-cyan.svg)]()
-[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Zero--Config-emerald.svg)]()
-[![Human Score](https://img.shields.io/badge/Anti--AI%20Score-99%25%20Human-success.svg)]()
+[![Release: v2.6.0](https://img.shields.io/badge/Release-v2.6.0%20Latest-blue.svg)](https://github.com/himanshushrivastavv-netizen/Content-Writer-AI/releases)
+[![Download ZIP](https://img.shields.io/badge/Download-Portable%20Package%20(.zip)-success.svg)](https://github.com/himanshushrivastavv-netizen/Content-Writer-AI/archive/refs/tags/v2.6.0.zip)
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+[![Human Score](https://img.shields.io/badge/Anti--AI%20Score-99%25%20Human-emerald.svg)]()
 
 > An autonomous, end-to-end **Content Writing & Production Agent Engine** built for content creators, SEO strategists, copywriters, agency founders, and marketing teams.
+
+---
+
+## 📥 Instant 1-Click Download (For All Users)
+
+👉 **[⚡ Click Here to Download Content-Writer-AI (v2.6.0 .ZIP)](https://github.com/himanshushrivastavv-netizen/Content-Writer-AI/archive/refs/tags/v2.6.0.zip)**
+
+---
+
+## 🚀 How to Run on Any Laptop in 3 Seconds (Zero Errors)
+
+1. **Download & Extract** the [ZIP File](https://github.com/himanshushrivastavv-netizen/Content-Writer-AI/archive/refs/tags/v2.6.0.zip).
+2. **Launch:**
+   - **Windows:** Simply double-click [`start.bat`](start.bat) — it automatically launches your browser at `http://localhost:3000`!
+   - **Mac / Linux:** Run `./start.sh` in terminal.
+   - **Direct Offline:** Or simply double-click [`index.html`](index.html) in any web browser!
 
 ---
 
@@ -25,35 +41,7 @@
 
 ---
 
-## 🚀 Instant 1-Click Quickstart (Run on Any Laptop Without Errors)
-
-This application is built with zero-dependency architecture so that **any user on Windows, Mac, or Linux can run it instantly**.
-
-### Option A: 1-Click Launcher (Easiest)
-- **Windows:** Double-click [`start.bat`](file:///c:/Users/hp/Downloads/Content%20Writing%20Agentic%20AI/start.bat) — opens your browser automatically at `http://localhost:3000`.
-- **Mac / Linux:** Run `chmod +x start.sh && ./start.sh`.
-
-### Option B: Terminal / Node.js
-```bash
-# Clone the repository
-git clone https://github.com/himanshushrivastavv-netizen/Content-Writer-AI.git
-
-# Enter the project folder
-cd Content-Writer-AI
-
-# Start the local server
-npm start
-# OR
-npx -y serve . -l 3000
-```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser!
-
-### Option C: Direct Browser Launch (Offline)
-Simply double-click [`index.html`](file:///c:/Users/hp/Downloads/Content%20Writing%20Agentic%20AI/index.html) to open the entire app in any browser with zero installations needed!
-
----
-
-## 🧠 1. The Formula Vault
+## 🧠 1. The Formula Vault (Copywriting & SEO)
 
 ### A. Copywriting Frameworks
 1. **PAS / PAS-O:** Problem $\rightarrow$ Agitate $\rightarrow$ Solution $\rightarrow$ Outcome.
@@ -83,9 +71,9 @@ Paste any YouTube Video Link (`youtube.com/watch?v=...`, `youtu.be/...`, `shorts
 
 ## 📄 Client Presentation & PDF Decks Included
 
-- [`CONTENT_CRAFT_AI_FEATURES_DECK.html`](file:///c:/Users/hp/Downloads/Content%20Writing%20Agentic%20AI/CONTENT_CRAFT_AI_FEATURES_DECK.html) — Client Presentation & 1-Click Printable PDF Deck.
-- [`AGENTIC_AI_100_PERCENT_PROOF_DECK.html`](file:///c:/Users/hp/Downloads/Content%20Writing%20Agentic%20AI/AGENTIC_AI_100_PERCENT_PROOF_DECK.html) — Technical Whitepaper proving 100% Agentic AI architecture.
-- [`CONTENT_WRITING_MASTER_PLAYBOOK.md`](file:///c:/Users/hp/Downloads/Content%20Writing%20Agentic%20AI/CONTENT_WRITING_MASTER_PLAYBOOK.md) — 2,850+ Word Content Operations Master Playbook.
+- [`CONTENT_CRAFT_AI_FEATURES_DECK.html`](CONTENT_CRAFT_AI_FEATURES_DECK.html) — Client Presentation & 1-Click Printable PDF Deck.
+- [`AGENTIC_AI_100_PERCENT_PROOF_DECK.html`](AGENTIC_AI_100_PERCENT_PROOF_DECK.html) — Technical Whitepaper proving 100% Agentic AI architecture.
+- [`CONTENT_WRITING_MASTER_PLAYBOOK.md`](CONTENT_WRITING_MASTER_PLAYBOOK.md) — 2,850+ Word Content Operations Master Playbook.
 
 ---
 
