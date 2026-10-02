@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon-blue">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContentCraft AI — Autonomous Content Ops, Formulas & YouTube Intel Engine</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Top Header Navigation -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <div>
+          <h1 class="brand-title" id="uiAgentName">ContentCraft AI</h1>
+          <p class="brand-sub">Autonomous Writer • Formula Vault • YouTube Intel • Humanizer</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Badges -->
+      <div class="nav-controls">
+        <div class="badge-pill" id="personaBadge">
+          <i class="fa-solid fa-sparkles"></i>
+          <span>Formula: <strong id="uiActiveFormula">PAS / PAS-O</strong></span>
+        </div>
+
+        <!-- YouTube Quick Tab Button -->
+        <button class="btn-nav btn-yt-quick" id="navYtQuickBtn" title="Analyze YouTube Videos">
+          <i class="fa-brands fa-youtube" style="color:#ff3333;"></i>
+          <span>YouTube Intel</span>
+        </button>
+
+        <!-- Theme Selector -->
+        <div class="theme-dropdown-wrapper">
+          <button class="btn-theme" id="themeDropdownBtn" title="Change Theme Style">
+            <i class="fa-solid fa-palette"></i>
+            <span id="currentThemeName">Neon Blue</span>
+            <i class="fa-solid fa-chevron-down caret"></i>
+          </button>
+          <div class="theme-menu" id="themeMenu">
+            <div class="theme-opt" data-theme="neon-blue"><span class="dot" style="background:#00f2fe;"></span> Neon Blue</div>
+            <div class="theme-opt" data-theme="cyber-purple"><span class="dot" style="background:#b026ff;"></span> Cyber Purple</div>
+            <div class="theme-opt" data-theme="emerald-matrix"><span class="dot" style="background:#00ff88;"></span> Emerald Matrix</div>
+            <div class="theme-opt" data-theme="crimson-flame"><span class="dot" style="background:#ff3366;"></span> Crimson Flame</div>
+            <div class="theme-opt" data-theme="sunset-amber"><span class="dot" style="background:#ffaa00;"></span> Sunset Amber</div>
+            <div class="theme-opt" data-theme="minimal-light"><span class="dot" style="background:#fff; border:1px solid #aaa;"></span> Minimal Light</div>
+          </div>
+        </div>
+
+        <!-- Saved Library Button -->
+        <button class="btn-nav" id="openLibraryBtn" title="View Saved Content">
+          <i class="fa-solid fa-bookmark"></i>
+          <span>Saved Articles (<span id="savedDraftsCount">0</span>)</span>
+        </button>
+
+        <!-- Live CLI / Settings -->
+        <button class="btn-nav" id="openCliBtn" title="Agent Live Settings">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Settings / CLI</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-body">
+      
+      <!-- LEFT: Simple Creation Studio & Mode Switcher -->
+      <section class="creation-studio">
+        
+        <!-- Creation Mode Selector (1-Click Studio vs AI Chatbot vs YouTube Intel) -->
+        <div class="mode-switch-container">
+          <button class="mode-tab-btn active" id="modeStudioBtn" data-mode="studio">
+            <i class="fa-solid fa-sliders"></i> <span>1-Click Studio</span>
+          </button>
+          <button class="mode-tab-btn" id="modeYoutubeBtn" data-mode="youtube">
+            <i class="fa-brands fa-youtube" style="color:#ff4444;"></i> <span>YouTube Intel</span>
+            <span class="badge-hot">New</span>
+          </button>
+          <button class="mode-tab-btn" id="modeChatbotBtn" data-mode="chatbot">
+            <i class="fa-solid fa-comments"></i> <span>AI Chatbot</span>
+          </button>
+        </div>
+
+        <!-- MODE A: 1-CLICK STUDIO PANELS -->
+        <div id="studioModeWrapper">
+          
+          <!-- STEP 1: Topic Input -->
+          <div class="step-card">
+            <div class="card-header">
+              <span class="step-number">1</span>
+              <h2>What is your topic or title?</h2>
+            </div>
+            
+            <div class="input-container">
+              <input type="text" id="contentTopic" class="topic-input" placeholder="Type any topic (e.g. AI tools for marketing, How to scale SaaS pipeline, Crypto guide...)" value="Agentic AI in Modern Content Marketing">
+              <div class="quick-tags">
+                <span class="tag-title">Try ideas:</span>
+                <button class="chip-idea" data-topic="How to make money with Affiliate Marketing in 2026">💰 Affiliate Marketing</button>
+                <button class="chip-idea" data-topic="Best Morning Habits of Highly Productive People">⚡ Morning Habits</button>
+                <button class="chip-idea" data-topic="Top 5 High-Conversion Landing Page Copywriting Secrets">🎯 Copywriting Secrets</button>
+                <button class="chip-idea" data-topic="How to grow your personal brand on LinkedIn">🚀 Personal Branding</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Formula Vault (Categorized Copywriting & SEO Formulas) -->
+          <div class="step-card formula-card-highlight">
+            <div class="card-header">
+              <span class="step-number">2</span>
+              <h2><i class="fa-solid fa-brain" style="color:var(--primary);"></i> Formula Vault (Copywriting & SEO)</h2>
+            </div>
+
+            <div class="form-group">
+              <label for="copyFramework" style="font-size:0.75rem; color:var(--text-dim); margin-bottom:4px;">
+                Select High-Conversion Writing Formula
+              </label>
+              <select id="copyFramework" class="formula-select">
+                <optgroup label="🔥 Copywriting & Conversion Formulas">
+                  <option value="PAS-O" selected>PAS / PAS-O — Problem → Agitate → Solution → Outcome</option>
+                  <option value="AIDA">AIDA — Attention → Interest → Desire → Action</option>
+                  <option value="BAB">BAB — Before → After → Bridge</option>
+                  <option value="PASTOR">PASTOR — Problem → Amplify → Story → Transformation → Offer → Response</option>
+                  <option value="FAB">FAB — Features → Advantages → Benefits</option>
+                  <option value="4Ps">4 Ps — Picture → Promise → Prove → Push</option>
+                </optgroup>
+                <optgroup label="🚀 SEO & Article Ranking Formulas">
+                  <option value="APP">APP Hook Formula — Agree → Promise → Preview (Max Dwell Time)</option>
+                  <option value="BucketBrigades">Bucket Brigades Flow — High Engagement & Zero Bounce Rate</option>
+                  <option value="Skyscraper">Skyscraper & Information Gain — 10x Depth & Entity Gap Analysis</option>
+                  <option value="HTagHierarchy">H-Tag Semantic Entity Hierarchy — Structured Knowledge Graph</option>
+                </optgroup>
+              </select>
+            </div>
+            
+            <div class="formula-badge-desc" id="formulaDescriptionPreview">
+              <i class="fa-solid fa-circle-info"></i> <span><strong>PAS-O:</strong> Pinpoints pain, agitates cost of delay, delivers solution, and proves final outcome.</span>
+            </div>
+          </div>
+
+          <!-- STEP 3: Content Format Cards -->
+          <div class="step-card">
+            <div class="card-header">
+              <span class="step-number">3</span>
+              <h2>Choose content format</h2>
+            </div>
+
+            <div class="format-cards-grid">
+              <div class="format-card active" data-type="seo_article">
+                <div class="card-icon"><i class="fa-solid fa-newspaper"></i></div>
+                <h3>Blog / SEO Article</h3>
+                <p>Rank on Google, educate readers & build topical authority.</p>
+              </div>
+
+              <div class="format-card" data-type="landing_page">
+                <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Website Landing Page</h3>
+                <p>Catchy hero title, bullet benefits & Call to Action.</p>
+              </div>
+
+              <div class="format-card" data-type="social_ads">
+                <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <h3>Social Media & Ads</h3>
+                <p>Ready-to-post LinkedIn, Twitter, Instagram & Ad hooks.</p>
+              </div>
+
+              <div class="format-card" data-type="email_sequence">
+                <div class="card-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3>Email Campaign</h3>
+                <p>3-part nurture sequence with high open & click rates.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Choose Tone -->
+          <div class="step-card">
+            <div class="card-header">
+              <span class="step-number">4</span>
+              <h2>Choose tone of voice</h2>
+            </div>
+
+            <div class="tone-pills-row">
+              <button class="tone-pill active" data-tone="Engaging, authoritative, zero-fluff, industry expert">
+                👔 Professional & Expert
+              </button>
+              <button class="tone-pill" data-tone="Friendly, conversational, easy-to-understand, casual">
+                💬 Friendly & Conversational
+              </button>
+              <button class="tone-pill" data-tone="Punchy, persuasive, high-converting direct-response">
+                ⚡ Punchy & Sales-Driven
+              </button>
+              <button class="tone-pill" data-tone="Simple, clear, beginner-friendly with zero jargon">
+                🎓 Simple & Beginner-Friendly
+              </button>
+            </div>
+          </div>
+
+          <!-- Optional Advanced Accordion -->
+          <div class="advanced-accordion">
+            <button class="accordion-toggle" id="advancedToggleBtn">
+              <span><i class="fa-solid fa-sliders"></i> Optional: Target Audience & Custom Keywords</span>
+              <i class="fa-solid fa-chevron-down" id="advChevron"></i>
+            </button>
+            
+            <div class="accordion-body" id="advancedBody" style="display: none;">
+              <div class="adv-grid">
+                <div class="form-group">
+                  <label>Target Audience</label>
+                  <input type="text" id="targetAudience" placeholder="e.g. Beginners, Small Business Owners, Marketers" value="Marketers, Creators & Business Owners">
+                </div>
+                <div class="form-group">
+                  <label>Focus Keywords</label>
+                  <input type="text" id="keywordsInput" placeholder="e.g. affiliate marketing, passive income" value="agentic ai, content marketing, modern seo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BIG 1-CLICK GENERATE BUTTON -->
+          <button class="btn-magic-generate" id="startGenerationBtn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>✨ Write My Content Now (Formula Applied)</span>
+          </button>
+
+        </div>
+
+        <!-- MODE B: YOUTUBE VIDEO ANALYZER & BRIEFING ENGINE -->
+        <div id="youtubeModeWrapper" style="display: none;">
+          <div class="yt-card">
+            <div class="yt-header">
+              <div class="yt-brand">
+                <i class="fa-brands fa-youtube yt-icon"></i>
+                <div>
+                  <h3>YouTube Video Analyzer & Briefing Engine</h3>
+                  <p>Extract transcripts, key timestamps, core insights & convert directly to full articles.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- YouTube URL Input -->
+            <div class="yt-input-section">
+              <label for="youtubeUrlInput"><i class="fa-solid fa-link"></i> Paste YouTube Video Link / URL</label>
+              <div class="yt-input-row">
+                <input type="text" id="youtubeUrlInput" placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or youtu.be/..." value="https://www.youtube.com/watch?v=3qHkcs3kG44">
+                <button class="btn-magic-primary" id="analyzeYoutubeBtn">
+                  <i class="fa-solid fa-bolt"></i> Extract & Brief
+                </button>
+              </div>
+              <div class="yt-quick-links">
+                <span class="tag-title">Try Samples:</span>
+                <button class="chip-idea yt-sample-chip" data-url="https://www.youtube.com/watch?v=aircAruvnKk" data-title="3Blue1Brown: But what is a neural network?">🧠 Neural Networks</button>
+                <button class="chip-idea yt-sample-chip" data-url="https://www.youtube.com/watch?v=kYv0m-LgWcE" data-title="Huberman Lab: How to Optimize Focus & Productivity">⚡ Productivity & Focus</button>
+                <button class="chip-idea yt-sample-chip" data-url="https://www.youtube.com/watch?v=b2Z8d8Z6eS0" data-title="Alex Hormozi: $100M Copywriting & Offer Strategies">💰 $100M Copywriting</button>
+              </div>
+            </div>
+
+            <!-- YouTube Video Details & Briefing Box -->
+            <div class="yt-brief-results" id="ytBriefResultsArea" style="display: none;">
+              
+              <!-- Video Preview Card -->
+              <div class="yt-video-meta-card">
+                <div class="yt-thumb-placeholder" id="ytThumbnailBox">
+                  <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="yt-meta-text">
+                  <h4 id="ytVideoTitle">Video Title</h4>
+                  <p id="ytChannelName"><i class="fa-solid fa-circle-check"></i> Verified YouTube Channel</p>
+                  <span class="yt-pill" id="ytVideoDuration"><i class="fa-solid fa-clock"></i> 14:28 Mins</span>
+                  <span class="yt-pill" id="ytWordDensity"><i class="fa-solid fa-font"></i> ~2,450 words transcript</span>
+                </div>
+              </div>
+
+              <!-- Action Bar: Convert Video Brief to Full Article -->
+              <div class="yt-convert-bar">
+                <div>
+                  <strong>Ready to transform this video into content?</strong>
+                  <p>Feeds extracted insights directly into your selected Formula (PAS-O, AIDA, Skyscraper, etc.).</p>
+                </div>
+                <button class="btn-magic-generate yt-convert-btn" id="convertYtToArticleBtn">
+                  <i class="fa-solid fa-file-signature"></i> 🚀 Convert Video Brief to Full Article
+                </button>
+              </div>
+
+              <!-- Brief Tabs: Summary, Timestamps, Quotables, Roadmap -->
+              <div class="yt-brief-sections">
+                
+                <div class="yt-section-block">
+                  <h4><i class="fa-solid fa-list-check"></i> Executive Summary</h4>
+                  <ul class="yt-bullet-list" id="ytExecSummaryList">
+                    <!-- Injected -->
+                  </ul>
+                </div>
+
+                <div class="yt-section-block">
+                  <h4><i class="fa-solid fa-timeline"></i> Key Timestamps & Topic Segments</h4>
+                  <div class="yt-timeline-grid" id="ytTimestampsGrid">
+                    <!-- Injected -->
+                  </div>
+                </div>
+
+                <div class="yt-section-block">
+                  <h4><i class="fa-solid fa-quote-left"></i> Quotable Snippets & Core Insights</h4>
+                  <div class="yt-quotes-box" id="ytQuotesBox">
+                    <!-- Injected -->
+                  </div>
+                </div>
+
+                <div class="yt-section-block">
+                  <h4><i class="fa-solid fa-map-location-dot"></i> Content Repurposing Roadmap</h4>
+                  <div class="yt-roadmap-grid" id="ytRoadmapGrid">
+                    <!-- Injected -->
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MODE C: INTERACTIVE CUSTOM AI CHATBOT -->
+        <div id="chatbotModeWrapper" style="display: none;">
+          <div class="chatbot-card">
+            <div class="chatbot-header">
+              <div class="bot-status">
+                <span class="bot-avatar"><i class="fa-solid fa-robot"></i></span>
+                <div>
+                  <h4>ContentCraft Custom Chatbot</h4>
+                  <span class="bot-state-txt"><span class="dot-live"></span> Ready to write custom text</span>
+                </div>
+              </div>
+              <button class="btn-xs" id="clearChatHistoryBtn"><i class="fa-solid fa-trash"></i> Clear</button>
+            </div>
+
+            <!-- Chat Suggestions Chips -->
+            <div class="chat-quick-prompts">
+              <button class="prompt-chip" data-prompt="Write a 300-word catchy intro using APP Hook formula">✍️ APP Hook Intro</button>
+              <button class="prompt-chip" data-prompt="Give me 5 viral scroll-stopping LinkedIn hooks for this topic">🔥 5 Viral Hooks</button>
+              <button class="prompt-chip" data-prompt="Write a high-converting cold email pitch using PAS-O">📧 PAS-O Cold Email</button>
+              <button class="prompt-chip" data-prompt="Explain this concept simply using Bucket Brigades">👶 Simple Explanation</button>
+            </div>
+
+            <!-- Messages Log -->
+            <div class="chat-messages-container" id="chatMessagesBox">
+              <div class="chat-msg bot">
+                <div class="msg-bubble">
+                  <p>👋 <strong>Hello! I am your AI Content & Copywriting Assistant.</strong></p>
+                  <p>Type any custom request, prompt, or topic below. I will write custom content, apply formulas (AIDA, PAS-O, Skyscraper), or summarize videos for you. Click <strong>"Send to Main Editor"</strong> to edit anytime!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="chat-input-bar">
+              <textarea id="chatCustomInput" rows="2" placeholder="Ask me to write anything or apply any formula..."></textarea>
+              <button id="sendChatBtn" class="btn-send-chat" title="Send Request">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT: Results, Live Editor, Humanizer, Grammarly & YouTube Brief Screen -->
+      <section class="results-viewer">
+        
+        <!-- Live Progress Bar -->
+        <div class="progress-bar-container" id="progressBarContainer" style="display: none;">
+          <div class="progress-spinner"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+          <div class="progress-info">
+            <span class="progress-title" id="progressStatusText">Agent is applying formula and executing workflow...</span>
+            <div class="progress-steps">
+              <span class="p-step active" id="pStep1">1. Research & Formula</span>
+              <span class="p-step" id="pStep2">2. Entity Hierarchy</span>
+              <span class="p-step" id="pStep3">3. Drafting Copy</span>
+              <span class="p-step" id="pStep4">4. Anti-AI & Grammar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Tabs Header -->
+        <div class="results-tabs-header">
+          <div class="tabs-group">
+            <button class="tab-btn active" data-target="tab-article">
+              <i class="fa-solid fa-file-lines"></i> <span>Final Content</span>
+            </button>
+            <button class="tab-btn" data-target="tab-yt-brief" id="tabYtBriefBtn" style="display:none;">
+              <i class="fa-brands fa-youtube" style="color:#ff3333;"></i> <span>Video Briefing</span>
+            </button>
+            <button class="tab-btn" data-target="tab-grammar">
+              <i class="fa-solid fa-spell-check"></i> <span>Grammarly & Clarity</span>
+              <span class="badge-counter" id="grammarIssuesBadge">0</span>
+            </button>
+            <button class="tab-btn" data-target="tab-humanizer">
+              <i class="fa-solid fa-shield-halved"></i> <span>Humanize & Anti-AI</span>
+            </button>
+            <button class="tab-btn" data-target="tab-social">
+              <i class="fa-solid fa-share-nodes"></i> <span>Social Media Posts</span>
+            </button>
+            <button class="tab-btn" data-target="tab-seo">
+              <i class="fa-solid fa-magnifying-glass"></i> <span>SEO Preview</span>
+            </button>
+            <button class="tab-btn" data-target="tab-tech">
+              <i class="fa-solid fa-database"></i> <span>DB JSON</span>
+            </button>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="action-buttons-group">
+            <button class="btn-action" id="copyAllContentBtn" title="Copy text to clipboard">
+              <i class="fa-regular fa-copy"></i> <span>Copy</span>
+            </button>
+            <button class="btn-action" id="downloadDocBtn" title="Download Text/Markdown File">
+              <i class="fa-solid fa-download"></i> <span>Download (.md)</span>
+            </button>
+            <button class="btn-action btn-save-highlight" id="saveDraftBtn" title="Save to local library">
+              <i class="fa-solid fa-bookmark"></i> <span>Save</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: Main Formatted Content & Quick AI Toolbar -->
+        <div class="tab-content active" id="tab-article">
+          
+          <div class="editor-ai-toolbar">
+            <div class="meta-stats-left">
+              <span class="meta-item"><i class="fa-solid fa-clock"></i> <span id="uiReadingTime">7 min read</span></span>
+              <span class="meta-item"><i class="fa-solid fa-font"></i> <span id="uiWordCount">1,420 words</span></span>
+              <span class="meta-item badge-human"><i class="fa-solid fa-circle-check"></i> <span id="uiHumanScore">99% Human Score</span></span>
+              <span class="meta-item badge-formula-tag" id="uiFormulaAppliedTag"><i class="fa-solid fa-brain"></i> PAS-O Formula</span>
+            </div>
+
+            <div class="ai-tools-right">
+              <button class="btn-tool-magic" id="quickHumanizeCurrentBtn" title="Make content sound 100% human">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> 1-Click Humanize
+              </button>
+              <button class="btn-tool-grammar" id="quickGrammarCheckBtn" title="Run Grammarly scan">
+                <i class="fa-solid fa-spell-check"></i> Check Grammar
+              </button>
+            </div>
+          </div>
+
+          <div class="readable-content" id="renderedOutputArea">
+            <!-- Formatted content injected here -->
+          </div>
+        </div>
+
+        <!-- TAB: Video Briefing Document -->
+        <div class="tab-content" id="tab-yt-brief">
+          <div class="readable-content" id="renderedYtBriefArea">
+            <!-- Formatted briefing doc injected here -->
+          </div>
+        </div>
+
+        <!-- TAB 2: Grammarly & Clarity Checker -->
+        <div class="tab-content" id="tab-grammar">
+          <div class="grammar-suite-box">
+            
+            <div class="grammar-header-card">
+              <div class="grammar-score-dial">
+                <span class="score-circle-text" id="grammarOverallScore">96%</span>
+                <span class="score-circle-lbl">Clarity & Grammar</span>
+              </div>
+              <div class="grammar-summary">
+                <h3><i class="fa-solid fa-circle-check" style="color:#10b981;"></i> Grammarly-Grade Quality Engine</h3>
+                <p>Auditing spelling, passive voice, punctuation, wordiness, and sentence readability in real time.</p>
+                <div class="grammar-actions-row">
+                  <button class="btn-magic-primary" id="autoFixAllGrammarBtn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> ⚡ 1-Click Auto-Fix All Issues
+                  </button>
+                  <button class="btn-secondary" id="reScanGrammarBtn">
+                    <i class="fa-solid fa-rotate"></i> Re-Scan Text
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grammar-split-view">
+              <div class="grammar-issues-panel">
+                <h4><i class="fa-solid fa-list-check"></i> Detected Suggestions (<span id="issuesCount">0</span>)</h4>
+                <div class="issues-list" id="grammarIssuesList"></div>
+              </div>
+
+              <div class="grammar-editor-panel">
+                <h4><i class="fa-solid fa-pen-to-square"></i> Editable Content</h4>
+                <textarea id="liveGrammarEditor" rows="18" placeholder="Content text..."></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB 3: Humanize & Anti-AI Filter -->
+        <div class="tab-content" id="tab-humanizer">
+          <div class="humanizer-container">
+            <div class="human-score-banner">
+              <div class="score-circle">
+                <span class="score-num" id="humanizerBigScore">99%</span>
+                <span class="score-lbl">Human Score</span>
+              </div>
+              <div class="score-text">
+                <h3>Robotic AI Clichés & Patterns Eliminated</h3>
+                <p>We automatically purge repetitive AI phrases (like <em>"delve into", "tapestry", "in today's fast-paced world", "testament"</em>) and add natural human sentence flow.</p>
+                <button class="btn-magic-primary" id="reHumanizeActiveBtn">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Re-Apply AI Humanizer on Current Draft
+                </button>
+              </div>
+            </div>
+
+            <div class="custom-humanizer-box">
+              <h4>Paste any external text to humanize & bypass AI detectors:</h4>
+              <textarea id="customHumanInput" rows="5" placeholder="Paste any AI-generated text here to humanize..."></textarea>
+              <div class="human-btn-row">
+                <button class="btn-action" id="runCustomHumanizeBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Clean & Humanize Text</button>
+              </div>
+              <div id="customHumanResult" class="custom-human-result" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: Repurposed Social Media Posts -->
+        <div class="tab-content" id="tab-social">
+          <div class="social-intro">
+            <h3>📱 Ready-to-Use Social Posts for this Topic</h3>
+            <p>Your main content has been broken down into ready-to-publish posts for LinkedIn, Twitter/X, and Email!</p>
+          </div>
+          <div class="social-cards-grid" id="socialCardsGrid"></div>
+        </div>
+
+        <!-- TAB 5: SEO Preview -->
+        <div class="tab-content" id="tab-seo">
+          <div class="seo-preview-box">
+            <h3><i class="fa-brands fa-google"></i> How your page looks on Google Search</h3>
+            <div class="google-snippet-card">
+              <div class="snippet-url" id="snippetUrl">https://yourwebsite.com/article/agentic-ai-marketing</div>
+              <div class="snippet-title" id="snippetTitle">Agentic AI in Content Marketing: The 2026 Guide</div>
+              <div class="snippet-desc" id="snippetDesc">Learn how modern marketing teams use autonomous AI workflows and conversion copywriting to 10x organic pipeline.</div>
+            </div>
+
+            <div class="faq-schema-box">
+              <h4>Included FAQs (High Ranking Snippets):</h4>
+              <div id="faqsList" class="faqs-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 6: Developer DB JSON Payload -->
+        <div class="tab-content" id="tab-tech">
+          <div class="tech-box">
+            <div class="tech-header">
+              <span><i class="fa-solid fa-server"></i> PostgreSQL / Supabase JSON Insertion Schema</span>
+              <button class="btn-xs" id="copyJsonBtn"><i class="fa-regular fa-copy"></i> Copy Raw JSON</button>
+            </div>
+            <pre><code id="jsonPayloadCode">{ /* Schema will appear here */ }</code></pre>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- CLI & Terminal Modal -->
+  <div class="modal-overlay" id="cliModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-terminal"></i> Live Agent CLI & Settings</h3>
+        <button class="btn-close-modal" id="closeCliModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-hint">Commands: <code>/name [NewName]</code>, <code>/theme [ThemeKey]</code>, <code>/persona [Tone]</code>, or <code>/settings</code>.</p>
+        <div class="term-box" id="cliTermOutput">
+          <div class="term-msg">[ContentCraft AI Engine Online] Ready for commands.</div>
+        </div>
+        <div class="cli-input-row">
+          <span>&gt;</span>
+          <input type="text" id="cliCommandInput" placeholder="Type /settings or /name SuperWriter...">
+          <button id="sendCliBtn">Run</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saved Drafts Library Modal -->
+  <div class="modal-overlay" id="libraryModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-bookmark"></i> My Saved Content Library</h3>
+        <button class="btn-close-modal" id="closeLibraryModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="library-list" id="libraryItemsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div class="toast-box" id="toastBox"></div>
+
+  <!-- Single Integrated Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
